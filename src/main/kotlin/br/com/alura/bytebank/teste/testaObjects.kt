@@ -1,6 +1,6 @@
 package br.com.alura.bytebank.teste
 
-import Conta.Contador.total
+import Conta.Companion.total
 import ContaCorrente
 import ContaPoupanca
 import br.com.alura.bytebank.modelo.Autenticavel

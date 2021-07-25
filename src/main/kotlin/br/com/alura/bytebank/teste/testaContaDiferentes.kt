@@ -6,45 +6,44 @@ import br.com.alura.bytebank.modelo.Cliente
 import br.com.alura.bytebank.modelo.Endereco
 
 fun testaContasDiferentes() {
-    val cliente = Cliente(
+    val contaCorrente = ContaCorrente(
+        titular = Cliente(
             nome = "Alex",
             cpf = "111.111.111-11",
-            senha = 1000,
-            endereco = Endereco(logradouro = "Rua 1")
+            senha = 1,
+            endereco = Endereco(
+                logradouro = "Rua Vergueiro"
+            )
+        ),
+        numero = 1000
     )
-    val contaCorrente = ContaCorrente(
-            titular = cliente,
-            numero = 1000
-    )
-
-    val clienteFran = Cliente(
-            nome = "Fran",
-            cpf = "333.333.333-33",
-            senha = 3000
-    )
+    println("titular ${contaCorrente.titular}")
+    println("nome do titular ${contaCorrente.titular.nome}")
+    println("cpf do titular ${contaCorrente.titular.cpf}")
+    println("endereco titular ${contaCorrente.titular.endereco}")
     val contaPoupanca = ContaPoupanca(
-            titular = clienteFran,
-            numero = 1001
+        titular = Cliente(
+            nome = "Fran",
+            cpf = "",
+            senha = 2
+        ),
+        numero = 1001
     )
-
     contaCorrente.deposita(1000.0)
     contaPoupanca.deposita(1000.0)
-
     println("saldo corrente: ${contaCorrente.saldo}")
-    println("saldo poupanca: ${contaPoupanca.saldo}")
-
+    println("saldo poupança: ${contaPoupanca.saldo}")
     contaCorrente.saca(100.0)
     contaPoupanca.saca(100.0)
+    println("saldo após saque corrente: ${contaCorrente.saldo}")
+    println("saldo após saque poupança: ${contaPoupanca.saldo}")
 
-    println("saldo corrente após saque: ${contaCorrente.saldo}")
-    println("saldo poupanca após saque: ${contaPoupanca.saldo}")
-
-    contaCorrente.transfere(100.0, contaPoupanca)
+    contaCorrente.transfere(100.0, contaPoupanca, 1)
 
     println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
     println("saldo poupanca após receber transferencia: ${contaPoupanca.saldo}")
 
-    contaPoupanca.transfere(100.0, contaCorrente)
+    contaPoupanca.transfere(100.0, contaCorrente, 2)
 
     println("saldo poupanca após transferir para poupança: ${contaPoupanca.saldo}")
     println("saldo corrente após receber transferencia: ${contaCorrente.saldo}")
