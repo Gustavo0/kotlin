@@ -22,9 +22,3 @@ fun testaMapArgs(){
     println(salariosComAumento.contentToString())
 
 }
-
-fun bigDecimalArrayOf(vararg valores: String): Array<BigDecimal> {
-    return Array<BigDecimal>(valores.size) { i ->
-        valores[i].toBigDecimal()
-    }
-}
