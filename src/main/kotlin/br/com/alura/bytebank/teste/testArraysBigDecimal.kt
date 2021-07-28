@@ -1,5 +1,8 @@
 package br.com.alura.bytebank.teste
 
+import java.math.BigDecimal
+import java.math.RoundingMode
+
 fun testaArraysBigDecimal(){
     val salarios = bigDecimalArrayOf("1500.55", "2000.00", "5000.00", "10000.00")
 
